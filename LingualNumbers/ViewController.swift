@@ -10,6 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let viewModel = ViewModel([
+        NumberList(.english),
+        NumberList(.chinese),
+        NumberList(.french),
+        NumberList(.japanese),
+        NumberList(.spanish),
+        NumberList(.korean)
+    ])
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .yellow
