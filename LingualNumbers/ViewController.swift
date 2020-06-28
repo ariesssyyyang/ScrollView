@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     // MARK: - UI
-    let tabsView: UIScrollView = UIScrollView()
-    let numbersView: UIScrollView = UIScrollView()
+    let tabsView: HorizontalScrollView = HorizontalScrollView()
+    let numbersView: HorizontalScrollView = HorizontalScrollView()
     let indicator: UIView = UIView()
 
     // MARK: - Constant
@@ -33,19 +33,21 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupSubview()
     }
 }
 
 private extension ViewController {
     func setupView() {
-        view.backgroundColor = .yellow
+        view.backgroundColor = .yellow //fixme
 
         view.addSubview(tabsView)
         tabsView.frame = CGRect(
             x: PADDING_WIDTH, y: UIApplication.shared.statusBarFrame.height,
             width: TAB_WIDTH, height: TAB_HEIGHT
         )
-        tabsView.backgroundColor = .green
+        tabsView.backgroundColor = .green //fixme
+        tabsView.isPagingEnabled = true
 
         view.addSubview(indicator)
         indicator.frame = CGRect(
@@ -59,6 +61,30 @@ private extension ViewController {
             x: 0, y: tabsView.frame.maxY,
             width: view.bounds.width, height: view.bounds.height - tabsView.frame.maxY
         )
-        numbersView.backgroundColor = .orange
+        numbersView.backgroundColor = .orange //fixme
+        numbersView.isPagingEnabled = true
+    }
+
+    func setupSubview() {
+        let languages = viewModel.lingualNumbers.map({ $0.language })
+        languages.enumerated().forEach { (index, language) in
+            let view = IndexView(index: index)
+            tabsView.addIndexView(view)
+            if index == 2 { //fixme
+                view.backgroundColor = .purple
+            }
+
+            let tableView = IndexTableView(index: index)
+            numbersView.addIndexView(tableView)
+            if index == 2 { //fixme
+                tableView.backgroundColor = .purple
+            }
+        }
+
+        let count = CGFloat(languages.count)
+        tabsView.contentSize = CGSize(width: TAB_WIDTH * count, height: TAB_HEIGHT)
+        numbersView.contentSize = CGSize(
+            width: numbersView.frame.width * count, height: numbersView.frame.height
+        )
     }
 }

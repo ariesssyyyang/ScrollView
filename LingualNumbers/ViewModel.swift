@@ -11,6 +11,8 @@ import Foundation
 struct ViewModel {
     private let _numbers: [NumberList]
 
+    var lingualNumbers: [NumberList] { _numbers }
+
     init(_ model: [NumberList]) {
         self._numbers = model
     }
