@@ -34,7 +34,7 @@ class ViewController: UIViewController {
 
 private extension ViewController {
     func setupView() {
-        view.backgroundColor = .yellow //fixme
+        view.backgroundColor = .white
 
         view.addSubview(tabsView)
         tabsView.frame = CGRect(
@@ -55,7 +55,8 @@ private extension ViewController {
         view.addSubview(numbersView)
         numbersView.frame = CGRect(
             x: 0, y: tabsView.frame.minY,
-            width: view.bounds.width, height: view.bounds.height - tabsView.frame.minY
+            width: view.bounds.width,
+            height: view.bounds.height - tabsView.frame.minY
         )
         numbersView.showsHorizontalScrollIndicator = false
         numbersView.isPagingEnabled = true
@@ -68,7 +69,8 @@ private extension ViewController {
             let label = UILabel(
                 frame: CGRect(
                     origin: CGPoint(x: TAB_WIDTH * CGFloat(index), y: 0),
-                    size: CGSize(width: TAB_WIDTH, height: TAB_HEIGHT))
+                    size: CGSize(width: TAB_WIDTH, height: TAB_HEIGHT)
+                )
             )
             label.textAlignment = .center
             label.text = viewModel.title(at: index)
@@ -78,6 +80,7 @@ private extension ViewController {
             tableView.register(NumberCell.self, forCellReuseIdentifier: NumberCell.reuseId)
             tableView.dataSource = self
             tableView.delegate = self
+            tableView.separatorInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
             tableView.isScrollEnabled = false
             tableView.allowsSelection = false
             tableView.backgroundColor = .clear

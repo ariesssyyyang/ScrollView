@@ -19,7 +19,6 @@
 		7F6CEC0B24B08272006FF36B /* ViewController+Scroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F6CEC0A24B08272006FF36B /* ViewController+Scroll.swift */; };
 		7F9B02E324A8E0B700ACD092 /* NumberList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B02E224A8E0B700ACD092 /* NumberList.swift */; };
 		7F9B02E524A8E25800ACD092 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B02E424A8E25800ACD092 /* MainViewModel.swift */; };
-		7F9B02E724A8EBC800ACD092 /* IndexLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B02E624A8EBC800ACD092 /* IndexLabel.swift */; };
 		7F9B02E924A8EC7C00ACD092 /* HorizontalScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B02E824A8EC7C00ACD092 /* HorizontalScrollView.swift */; };
 		7F9B02EB24A8EECB00ACD092 /* Indexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B02EA24A8EECB00ACD092 /* Indexable.swift */; };
 		7F9B02ED24A8EEFD00ACD092 /* IndexTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F9B02EC24A8EEFD00ACD092 /* IndexTableView.swift */; };
@@ -40,7 +39,6 @@
 		7F6CEC0A24B08272006FF36B /* ViewController+Scroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Scroll.swift"; sourceTree = "<group>"; };
 		7F9B02E224A8E0B700ACD092 /* NumberList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberList.swift; sourceTree = "<group>"; };
 		7F9B02E424A8E25800ACD092 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		7F9B02E624A8EBC800ACD092 /* IndexLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexLabel.swift; sourceTree = "<group>"; };
 		7F9B02E824A8EC7C00ACD092 /* HorizontalScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalScrollView.swift; sourceTree = "<group>"; };
 		7F9B02EA24A8EECB00ACD092 /* Indexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indexable.swift; sourceTree = "<group>"; };
 		7F9B02EC24A8EEFD00ACD092 /* IndexTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexTableView.swift; sourceTree = "<group>"; };
@@ -102,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				7F9B02EA24A8EECB00ACD092 /* Indexable.swift */,
-				7F9B02E624A8EBC800ACD092 /* IndexLabel.swift */,
 				7F9B02EC24A8EEFD00ACD092 /* IndexTableView.swift */,
 				7F9B02E824A8EC7C00ACD092 /* HorizontalScrollView.swift */,
 				7F6CEC0124B07DBB006FF36B /* NumberCell.swift */,
@@ -218,7 +215,6 @@
 				7F9B02E524A8E25800ACD092 /* MainViewModel.swift in Sources */,
 				7F6CEC0B24B08272006FF36B /* ViewController+Scroll.swift in Sources */,
 				7F6CEC0924B080A6006FF36B /* ReuseId.swift in Sources */,
-				7F9B02E724A8EBC800ACD092 /* IndexLabel.swift in Sources */,
 				7F056B7024A777D700F00BD1 /* AppDelegate.swift in Sources */,
 				7F9B02EB24A8EECB00ACD092 /* Indexable.swift in Sources */,
 			);

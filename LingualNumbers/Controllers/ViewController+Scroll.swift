@@ -13,8 +13,6 @@ extension ViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let contentOffset = scrollView.contentOffset
         switch scrollView {
-        case tabsView:
-            print("👻 tabsview didscroll")
         case numbersView:
             let tabViewBoundY = tabsView.bounds.origin.y
             tabsView.bounds.origin = CGPoint(x: contentOffset.x / 2, y: tabViewBoundY)
