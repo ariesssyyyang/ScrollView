@@ -18,6 +18,7 @@ extension NumberCell: Bindable {
         guard let viewModel = viewModel as? CellViewModel else { return }
         textLabel?.textAlignment = .center
         textLabel?.text = viewModel.text
+        backgroundColor = .clear
         // Configuration
     }
 }

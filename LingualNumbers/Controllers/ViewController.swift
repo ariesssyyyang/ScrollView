@@ -46,8 +46,10 @@ private extension ViewController {
             x: PADDING_WIDTH, y: UIApplication.shared.statusBarFrame.height,
             width: TAB_WIDTH, height: TAB_HEIGHT
         )
-        tabsView.backgroundColor = .green //fixme
+        tabsView.showsHorizontalScrollIndicator = false
         tabsView.isPagingEnabled = true
+        tabsView.delegate = self
+        tabsView.clipsToBounds = false
 
         view.addSubview(indicator)
         indicator.frame = CGRect(
@@ -61,8 +63,9 @@ private extension ViewController {
             x: 0, y: tabsView.frame.maxY,
             width: view.bounds.width, height: view.bounds.height - tabsView.frame.maxY
         )
-        numbersView.backgroundColor = .orange //fixme
+        numbersView.showsHorizontalScrollIndicator = false
         numbersView.isPagingEnabled = true
+        numbersView.delegate = self
     }
 
     func setupSubview() {
@@ -76,6 +79,10 @@ private extension ViewController {
             let tableView = IndexTableView(index: index)
             tableView.register(NumberCell.self, forCellReuseIdentifier: NumberCell.reuseId)
             tableView.dataSource = self
+            tableView.delegate = self
+            tableView.isScrollEnabled = false
+            tableView.allowsSelection = false
+            tableView.backgroundColor = .clear
             numbersView.addIndexView(tableView)
         }
 
