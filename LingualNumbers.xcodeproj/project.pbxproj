@@ -64,19 +64,51 @@
 		7F056B6E24A777D700F00BD1 /* LingualNumbers */ = {
 			isa = PBXGroup;
 			children = (
+				7F9B02F024A8F1E900ACD092 /* Models */,
+				7F9B02EE24A8F1D100ACD092 /* Views */,
+				7F9B02F124A8F1F400ACD092 /* ViewModels */,
+				7F9B02EF24A8F1E000ACD092 /* Controllers */,
 				7F056B6F24A777D700F00BD1 /* AppDelegate.swift */,
-				7F9B02E224A8E0B700ACD092 /* NumberList.swift */,
-				7F9B02E424A8E25800ACD092 /* ViewModel.swift */,
-				7F9B02EA24A8EECB00ACD092 /* Indexable.swift */,
-				7F9B02E624A8EBC800ACD092 /* IndexView.swift */,
-				7F9B02EC24A8EEFD00ACD092 /* IndexTableView.swift */,
-				7F9B02E824A8EC7C00ACD092 /* HorizontalScrollView.swift */,
-				7F056B7124A777D700F00BD1 /* ViewController.swift */,
 				7F056B7624A777D900F00BD1 /* Assets.xcassets */,
 				7F056B7824A777D900F00BD1 /* LaunchScreen.storyboard */,
 				7F056B7B24A777D900F00BD1 /* Info.plist */,
 			);
 			path = LingualNumbers;
+			sourceTree = "<group>";
+		};
+		7F9B02EE24A8F1D100ACD092 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7F9B02EA24A8EECB00ACD092 /* Indexable.swift */,
+				7F9B02E624A8EBC800ACD092 /* IndexView.swift */,
+				7F9B02EC24A8EEFD00ACD092 /* IndexTableView.swift */,
+				7F9B02E824A8EC7C00ACD092 /* HorizontalScrollView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		7F9B02EF24A8F1E000ACD092 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				7F056B7124A777D700F00BD1 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		7F9B02F024A8F1E900ACD092 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7F9B02E224A8E0B700ACD092 /* NumberList.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7F9B02F124A8F1F400ACD092 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7F9B02E424A8E25800ACD092 /* ViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
