@@ -47,6 +47,7 @@ private extension ViewController {
             width: TAB_WIDTH, height: TAB_HEIGHT
         )
         tabsView.showsHorizontalScrollIndicator = false
+        tabsView.isScrollEnabled = false
         tabsView.isPagingEnabled = true
         tabsView.delegate = self
         tabsView.clipsToBounds = false
@@ -60,8 +61,8 @@ private extension ViewController {
 
         view.addSubview(numbersView)
         numbersView.frame = CGRect(
-            x: 0, y: tabsView.frame.maxY,
-            width: view.bounds.width, height: view.bounds.height - tabsView.frame.maxY
+            x: 0, y: tabsView.frame.minY,
+            width: view.bounds.width, height: view.bounds.height - tabsView.frame.minY
         )
         numbersView.showsHorizontalScrollIndicator = false
         numbersView.isPagingEnabled = true
@@ -76,7 +77,7 @@ private extension ViewController {
             label.text = viewModel.title(at: index)
             tabsView.addIndexView(label)
 
-            let tableView = IndexTableView(index: index)
+            let tableView = IndexTableView(index: index, expectY: TAB_HEIGHT)
             tableView.register(NumberCell.self, forCellReuseIdentifier: NumberCell.reuseId)
             tableView.dataSource = self
             tableView.delegate = self

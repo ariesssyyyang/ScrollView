@@ -14,7 +14,7 @@ extension ViewController: UIScrollViewDelegate {
         let contentOffset = scrollView.contentOffset
         switch scrollView {
         case tabsView:
-            numbersView.contentOffset.x = contentOffset.x * 2
+            print("👻 tabsview didscroll")
         case numbersView:
             tabsView.contentOffset.x = contentOffset.x / 2
         default:

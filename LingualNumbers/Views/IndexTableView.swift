@@ -13,8 +13,11 @@ class IndexTableView: UITableView, Indexable {
 
     let index: Int
 
-    init(index: Int) {
+    let expectMinY: CGFloat?
+
+    init(index: Int, expectY: CGFloat? = nil) {
         self.index = index
+        self.expectMinY = expectY
         super.init(frame: .zero, style: .plain)
     }
 

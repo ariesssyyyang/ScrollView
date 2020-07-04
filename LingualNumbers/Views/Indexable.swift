@@ -11,4 +11,5 @@ import UIKit
 
 protocol Indexable: UIView {
     var index: Int { get }
+    var expectMinY: CGFloat? { get }
 }

@@ -24,8 +24,8 @@ class HorizontalScrollView: UIScrollView {
         let height = frame.height
         views.forEach { (view) in
             view.frame = CGRect(
-                x: CGFloat(view.index) * width, y: 0,
-                width: width, height: height
+                x: CGFloat(view.index) * width, y: view.expectMinY ?? 0,
+                width: width, height: height - (view.expectMinY ?? 0)
             )
         }
     }

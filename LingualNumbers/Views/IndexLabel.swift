@@ -13,6 +13,8 @@ class IndexLabel: UILabel, Indexable {
 
     let index: Int
 
+    let expectMinY: CGFloat? = nil
+
     init(index: Int) {
         self.index = index
         super.init(frame: .zero)
