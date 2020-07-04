@@ -9,14 +9,22 @@
 import Foundation
 
 struct MainViewModel {
+
     private let _numbers: [NumberList]
 
     var numberOfLanguages: Int { _numbers.count }
 
     var numberOfNumbers: Int { 10 }
 
-    init(_ model: [NumberList]) {
-        self._numbers = model
+    init() {
+        self._numbers = [
+            NumberList(.english),
+            NumberList(.chinese),
+            NumberList(.french),
+            NumberList(.japanese),
+            NumberList(.spanish),
+            NumberList(.korean)
+        ]
     }
 
     func title(at index: Int) -> String? {

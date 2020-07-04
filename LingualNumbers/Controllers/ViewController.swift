@@ -21,14 +21,7 @@ class ViewController: UIViewController {
     var PADDING_WIDTH: CGFloat { view.bounds.width / 4 }
 
     // MARK: - View Model
-    let viewModel = MainViewModel([
-        NumberList(.english),
-        NumberList(.chinese),
-        NumberList(.french),
-        NumberList(.japanese),
-        NumberList(.spanish),
-        NumberList(.korean)
-    ])
+    let viewModel = MainViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
