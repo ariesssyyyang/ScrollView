@@ -16,7 +16,8 @@ extension ViewController: UIScrollViewDelegate {
         case tabsView:
             print("👻 tabsview didscroll")
         case numbersView:
-            tabsView.contentOffset.x = contentOffset.x / 2
+            let tabViewBoundY = tabsView.bounds.origin.y
+            tabsView.bounds.origin = CGPoint(x: contentOffset.x / 2, y: tabViewBoundY)
         default:
             return
         }

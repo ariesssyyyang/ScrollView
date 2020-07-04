@@ -11,9 +11,10 @@ import UIKit
 class ViewController: UIViewController {
 
     // MARK: - UI
-    let tabsView: HorizontalScrollView = HorizontalScrollView()
+    let tabsView: UIView = UIView()
     let numbersView: HorizontalScrollView = HorizontalScrollView()
     let indicator: UIView = UIView()
+    let tapAreaView: UIView = UIView()
 
     // MARK: - Constant
     var TAB_WIDTH: CGFloat { view.bounds.width / 2 }
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupSubview()
+        addTapGesture()
     }
 }
 
@@ -39,11 +41,9 @@ private extension ViewController {
             x: PADDING_WIDTH, y: UIApplication.shared.statusBarFrame.height,
             width: TAB_WIDTH, height: TAB_HEIGHT
         )
-        tabsView.showsHorizontalScrollIndicator = false
-        tabsView.isScrollEnabled = false
-        tabsView.isPagingEnabled = true
-        tabsView.delegate = self
         tabsView.clipsToBounds = false
+        view.addSubview(tapAreaView)
+        tapAreaView.frame = tabsView.frame
 
         view.addSubview(indicator)
         indicator.frame = CGRect(
@@ -65,10 +65,14 @@ private extension ViewController {
     func setupSubview() {
         let numberOfLanguages = viewModel.numberOfLanguages
         for index in 0..<numberOfLanguages {
-            let label = IndexLabel(index: index)
+            let label = UILabel(
+                frame: CGRect(
+                    origin: CGPoint(x: TAB_WIDTH * CGFloat(index), y: 0),
+                    size: CGSize(width: TAB_WIDTH, height: TAB_HEIGHT))
+            )
             label.textAlignment = .center
             label.text = viewModel.title(at: index)
-            tabsView.addIndexView(label)
+            tabsView.addSubview(label)
 
             let tableView = IndexTableView(index: index, expectY: TAB_HEIGHT)
             tableView.register(NumberCell.self, forCellReuseIdentifier: NumberCell.reuseId)
@@ -80,12 +84,33 @@ private extension ViewController {
             numbersView.addIndexView(tableView)
         }
 
-        let count = CGFloat(numberOfLanguages)
-        tabsView.contentSize = CGSize(
-            width: TAB_WIDTH * count, height: TAB_HEIGHT
-        )
         numbersView.contentSize = CGSize(
-            width: numbersView.frame.width * count, height: numbersView.frame.height
+            width: numbersView.frame.width * CGFloat(numberOfLanguages),
+            height: numbersView.frame.height
         )
+    }
+
+    func addTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTap(_:)))
+        numbersView.addGestureRecognizer(tap)
+    }
+
+    @objc func didTap(_ tap: UITapGestureRecognizer) {
+        let point = tap.location(in: tapAreaView)
+        guard
+            point.y > 0 && point.y < TAB_HEIGHT,
+            point.x < 0 || point.x > TAB_WIDTH
+            else { return }
+        let x: CGFloat
+        let y: CGFloat = numbersView.contentOffset.y
+        switch point.x {
+        case ...0:
+            x = numbersView.contentOffset.x - view.frame.width
+        case TAB_WIDTH...:
+            x = numbersView.contentOffset.x + view.frame.width
+        default:
+            return
+        }
+        numbersView.setContentOffset(CGPoint(x: x, y: y), animated: true)
     }
 }
