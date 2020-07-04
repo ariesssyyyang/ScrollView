@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     var PADDING_WIDTH: CGFloat { view.bounds.width / 4 }
 
     // MARK: - View Model
-    let viewModel = ViewModel([
+    let viewModel = MainViewModel([
         NumberList(.english),
         NumberList(.chinese),
         NumberList(.french),
@@ -74,6 +74,8 @@ private extension ViewController {
             tabsView.addIndexView(label)
 
             let tableView = IndexTableView(index: index)
+            tableView.register(NumberCell.self, forCellReuseIdentifier: NumberCell.reuseId)
+            tableView.dataSource = self
             numbersView.addIndexView(tableView)
         }
 
