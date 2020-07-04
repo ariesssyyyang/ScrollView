@@ -16,6 +16,18 @@ extension ViewController: UIScrollViewDelegate {
         case numbersView:
             let tabViewBoundY = tabsView.bounds.origin.y
             tabsView.bounds.origin = CGPoint(x: contentOffset.x / 2, y: tabViewBoundY)
+            if contentOffset.x < floor(VIEW_WIDTH / 2) {
+                numbersView.contentOffset = CGPoint(
+                    x: VIEW_WIDTH * CGFloat(viewModel.numberOfLanguages - 2) + contentOffset.x,
+                    y: contentOffset.y
+                )
+            }
+            if contentOffset.x > VIEW_WIDTH * CGFloat(viewModel.numberOfLanguages - 2) + ceil(VIEW_WIDTH / 2) {
+                numbersView.contentOffset = CGPoint(
+                    x: contentOffset.x.truncatingRemainder(dividingBy: VIEW_WIDTH),
+                    y: contentOffset.y
+                )
+            }
         default:
             return
         }

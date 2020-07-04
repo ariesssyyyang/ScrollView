@@ -17,7 +17,7 @@ struct MainViewModel {
     var numberOfNumbers: Int { 10 }
 
     init() {
-        self._numbers = [
+        let target = [
             NumberList(.english),
             NumberList(.chinese),
             NumberList(.french),
@@ -25,6 +25,8 @@ struct MainViewModel {
             NumberList(.spanish),
             NumberList(.korean)
         ]
+        let (firstBuffer, lastBuffer) = (target[0], target[target.count - 1])
+        self._numbers = [lastBuffer] + target + [firstBuffer]
     }
 
     func title(at index: Int) -> String? {

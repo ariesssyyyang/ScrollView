@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     let tapAreaView: UIView = UIView()
 
     // MARK: - Constant
+    var VIEW_WIDTH: CGFloat { view.frame.width }
     var TAB_WIDTH: CGFloat { view.bounds.width / 2 }
     let TAB_HEIGHT: CGFloat = 50
     var PADDING_WIDTH: CGFloat { view.bounds.width / 4 }
@@ -91,6 +92,8 @@ private extension ViewController {
             width: numbersView.frame.width * CGFloat(numberOfLanguages),
             height: numbersView.frame.height
         )
+        let firstPageOffset = CGPoint(x: VIEW_WIDTH, y: 0)
+        numbersView.setContentOffset(firstPageOffset, animated: false)
     }
 
     func addTapGesture() {
@@ -102,15 +105,17 @@ private extension ViewController {
         let point = tap.location(in: tapAreaView)
         guard
             point.y > 0 && point.y < TAB_HEIGHT,
-            point.x < 0 || point.x > TAB_WIDTH
+            point.x < 0 || point.x > TAB_WIDTH,
+            numbersView.contentOffset.x.truncatingRemainder(
+                dividingBy: CGFloat(VIEW_WIDTH)) == 0
             else { return }
         let x: CGFloat
         let y: CGFloat = numbersView.contentOffset.y
         switch point.x {
         case ...0:
-            x = numbersView.contentOffset.x - view.frame.width
+            x = numbersView.contentOffset.x - VIEW_WIDTH
         case TAB_WIDTH...:
-            x = numbersView.contentOffset.x + view.frame.width
+            x = numbersView.contentOffset.x + VIEW_WIDTH
         default:
             return
         }
