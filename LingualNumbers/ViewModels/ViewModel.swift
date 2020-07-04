@@ -11,10 +11,14 @@ import Foundation
 struct ViewModel {
     private let _numbers: [NumberList]
 
-    var lingualNumbers: [NumberList] { _numbers }
+    var numberOfLanguages: Int { _numbers.count }
 
     init(_ model: [NumberList]) {
         self._numbers = model
     }
 
+    func title(at index: Int) -> String? {
+        guard index < numberOfLanguages else { return nil }
+        return _numbers[index].language.tabText
+    }
 }

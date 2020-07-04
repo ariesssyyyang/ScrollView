@@ -1,5 +1,5 @@
 //
-//  IndexView.swift
+//  IndexLabel.swift
 //  LingualNumbers
 //
 //  Created by Aries Yang on 2020/6/28.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class IndexView: UIView, Indexable {
+class IndexLabel: UILabel, Indexable {
 
     let index: Int
 

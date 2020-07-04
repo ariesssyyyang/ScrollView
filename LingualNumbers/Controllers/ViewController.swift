@@ -66,23 +66,21 @@ private extension ViewController {
     }
 
     func setupSubview() {
-        let languages = viewModel.lingualNumbers.map({ $0.language })
-        languages.enumerated().forEach { (index, language) in
-            let view = IndexView(index: index)
-            tabsView.addIndexView(view)
-            if index == 2 { //fixme
-                view.backgroundColor = .purple
-            }
+        let numberOfLanguages = viewModel.numberOfLanguages
+        for index in 0..<numberOfLanguages {
+            let label = IndexLabel(index: index)
+            label.textAlignment = .center
+            label.text = viewModel.title(at: index)
+            tabsView.addIndexView(label)
 
             let tableView = IndexTableView(index: index)
             numbersView.addIndexView(tableView)
-            if index == 2 { //fixme
-                tableView.backgroundColor = .purple
-            }
         }
 
-        let count = CGFloat(languages.count)
-        tabsView.contentSize = CGSize(width: TAB_WIDTH * count, height: TAB_HEIGHT)
+        let count = CGFloat(numberOfLanguages)
+        tabsView.contentSize = CGSize(
+            width: TAB_WIDTH * count, height: TAB_HEIGHT
+        )
         numbersView.contentSize = CGSize(
             width: numbersView.frame.width * count, height: numbersView.frame.height
         )
